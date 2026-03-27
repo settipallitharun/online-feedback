@@ -56,7 +56,7 @@ OnlineFeedbackCollector/
 │
 ├── app.py                 # Flask backend code
 ├── requirements.txt        # Required Python packages
-├── database.db            # SQLite database (created automatically)
+├── database.db            # SQLite database
 │
 ├── static/
 │   ├── css/
@@ -136,7 +136,7 @@ OnlineFeedbackCollector/
 ## 🔧 Configuration
 
 ### Database
-- The application uses SQLite (`database.db`) which is created automatically
+- The application uses SQLite (`database.db`)
 - No additional database configuration required
 
 ### Customization
@@ -204,10 +204,6 @@ CREATE TABLE feedback (
    pip install -r requirements.txt
    ```
 
-3. **Database Issues**
-   - Delete `database.db` and restart the application
-   - The database will be recreated automatically
-
 ## 🚀 Deployment
 
 ### Local Development
@@ -218,7 +214,7 @@ CREATE TABLE feedback (
 For production deployment, consider:
 - Using a production WSGI server (Gunicorn, uWSGI)
 - Setting up a reverse proxy (Nginx)
-- Configuring a proper database (PostgreSQL, MySQL)
+- Configuring a proper database (MySQL)
 - Implementing SSL/TLS
 - Setting up monitoring and logging
 
@@ -230,17 +226,5 @@ For production deployment, consider:
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Check the troubleshooting section above
-- Review the code comments for additional context
-- Create an issue in the project repository
-
----
 
 **Happy Feedback Collecting! 🎉**
