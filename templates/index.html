@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block title %}Submit Feedback - Online Feedback Collector{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-gradient text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-comment-alt me-2"></i>Share Your Feedback
+                </h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">We value your opinion! Please take a moment to share your thoughts with us.</p>
+                
+                <form id="feedbackForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            <i class="fas fa-user me-1"></i>Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                        <div class="invalid-feedback">Please provide your name.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope me-1"></i>Email <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">
+                            <i class="fas fa-star me-1"></i>Rating <span class="text-danger">*</span>
+                        </label>
+                        <div class="rating-container">
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="rating" id="rating1" value="1" required>
+                                <label class="btn btn-outline-warning" for="rating1">
+                                    <i class="fas fa-star"></i> 1
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="rating" id="rating2" value="2">
+                                <label class="btn btn-outline-warning" for="rating2">
+                                    <i class="fas fa-star"></i> 2
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="rating" id="rating3" value="3">
+                                <label class="btn btn-outline-warning" for="rating3">
+                                    <i class="fas fa-star"></i> 3
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="rating" id="rating4" value="4">
+                                <label class="btn btn-outline-warning" for="rating4">
+                                    <i class="fas fa-star"></i> 4
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="rating" id="rating5" value="5">
+                                <label class="btn btn-outline-warning" for="rating5">
+                                    <i class="fas fa-star"></i> 5
+                                </label>
+                            </div>
+                            <small class="form-text text-muted">Rate your experience from 1 (Poor) to 5 (Excellent)</small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="comments" class="form-label">
+                            <i class="fas fa-comment me-1"></i>Comments
+                        </label>
+                        <textarea class="form-control" id="comments" name="comments" rows="4" 
+                                  placeholder="Share your detailed feedback here..."></textarea>
+                        <small class="form-text text-muted">Optional: Tell us more about your experience</small>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="reset" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-redo me-1"></i>Reset
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane me-1"></i>Submit Feedback
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-check-circle me-2"></i>Success!
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0">Thank you for your feedback! Your response has been successfully submitted.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-exclamation-circle me-2"></i>Error
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0" id="errorMessage">An error occurred while submitting your feedback. Please try again.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
